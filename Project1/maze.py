@@ -28,6 +28,9 @@ verticalChar = "|"
 #node class for the Binary space partition tree
 #class node:
 #    coordinate = 
+#    def __init__(self, hRange, vRange):
+#        self.vertSize = vRange
+#        self.horiSize = hRange
 
 #def binarySP(rowsA, columnsA):
 
