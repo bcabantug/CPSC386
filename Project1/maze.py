@@ -11,21 +11,16 @@ columnsA = input("Please input the amount of columns: ")
 print (rowsA)
 print (columnsA)
 
-
-
 #variables 
 #rowSize = (int(rowsA) * 2) + 1
 #columnSize=(int(columnsA) * 2) +1
-
-
-
 #print(rowSize)
 #print(columnSize)
 
 # global variables to print maze character 
-cornerChar = "+"
-horizontalChar = "-"
-verticalChar = "|"
+#cornerChar = "+"
+#horizontalChar = "-"
+#verticalChar = "|"
 
 #node class for the Binary space partition tree (eventually all leaves will be in order and will be able to draw out the maze)
 class Node:
@@ -44,9 +39,10 @@ def binarySP(rows, columns, currNode):
          #then stop the split and return to previous parent node to continue the split
          return
 
+    print currNode.coordinates
 
     else:
-        selectRandSplit = randInt(1,2)
+        selectRandSplit = randint(1,2)
         print selectRandSplit    #outputs the selected split direction
 
     
@@ -77,6 +73,8 @@ def binarySP(rows, columns, currNode):
 
 
 
+treeRoot = Node(0, int(rowsA), 0, int(columnsA),none, none)
 
+binarySP(int(rowsA), int(columnsA), treeRoot)
 
 #beginSpace = Node(int(rowsA), int(columnsA)
