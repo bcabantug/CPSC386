@@ -118,6 +118,16 @@ def binarySP(rows, columns, currNode):
             binarySP(currNode.split2.coordinates[0][1], currNode.split2.coordinates[1][1], currNode.split2)
 
 
+<<<<<<< HEAD
+=======
+#node class for the Binary space partition tree
+#class node:
+#    
+#    def __init__(self, hRange, vRange):
+#        self.coordinates = [[0,hRange], [0,vRange]]
+#        self.split1 = none
+#        self.split2 = none
+>>>>>>> origin/master
 
 treeRoot = Node(0, rowsI, 0, columnsI)
 
