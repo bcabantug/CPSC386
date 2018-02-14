@@ -52,23 +52,32 @@ def binarySP(rows, columns, currNode):
             #get the random coordinate between the range of the current node to split betweeen for the children
             #using +1 -1 to account for bounderies of the end coordinates to prevent selection of self coordinates and infinitely recurr
             
+            #if there is only one possible split between the current section (cell length = 2)
+            if currNode.coordinates[0][1]-currNode.coordinates[0][0] == 2:
+                #set it so that the split is equivalent of to have the cell coordinate be size 1
+                currNode.split1=Node(currNode.coordinates[0][0], currNode.coordinates[0][0]+1, currNode.coordinates[1][0], currNode.coordinates[1][1])
+                print(currNode.split1.coordinates)
+                currNode.split2=Node(currNode.coordinates[0][0]+1, currNode.coordinates[0][1], currNode.coordinates[1][0], currNode.coordinates[1][1])
+                print(currNode.split2.coordinates)
             
-            randSplit = random.randint(currNode.coordinates[0][0]+1, rows-1)
+            else:
+
+                randSplit = random.randint(currNode.coordinates[0][0]+1, rows-1)
             
-            #adjust split for situation where a number is picked such that it is equal to the last edge of the rows
-            #if randSplit+1 == currNode.coordinates[0][1] or randSplit == currNode.coordinates[0][0]:
-            #    randSplit = random.randint(currNode.coordinates[0][0]+1, rows-1) #untested condition
+                #adjust split for situation where a number is picked such that it is equal to the last edge of the rows
+                #if randSplit+1 == currNode.coordinates[0][1] or randSplit == currNode.coordinates[0][0]:
+                #    randSplit = random.randint(currNode.coordinates[0][0]+1, rows-1) #untested condition
 
             
 
-            print("rand "+str(randSplit) + "\n") #outputs the coordinate that will be split among them
-            #set the two nodes child nodes
+                print("rand "+str(randSplit) + "\n") #outputs the coordinate that will be split among them
+                #set the two nodes child nodes
             
             
-            currNode.split1 = Node(currNode.coordinates[0][0],randSplit,currNode.coordinates[1][0] ,currNode.coordinates[1][1])
-            print(currNode.split1.coordinates)
-            currNode.split2 = Node(randSplit+1, currNode.coordinates[0][1],currNode.coordinates[1][0] ,currNode.coordinates[1][1])
-            print(currNode.split2.coordinates)
+                currNode.split1 = Node(currNode.coordinates[0][0],randSplit,currNode.coordinates[1][0] ,currNode.coordinates[1][1])
+                print(currNode.split1.coordinates)
+                currNode.split2 = Node(randSplit+1, currNode.coordinates[0][1],currNode.coordinates[1][0] ,currNode.coordinates[1][1])
+                print(currNode.split2.coordinates)
 
             #start the recursive calls for the child nodes to develop the granchildren
             print ("split1RandH")
@@ -78,19 +87,29 @@ def binarySP(rows, columns, currNode):
 
         #if split happens vertically    
         elif selectRandSplit == 2:
-            #get the random coordinate between the range of the current node to split between for the children
-            randSplit = random.randint(currNode.coordinates[1][0]+1, columns-1)
 
-            print("rand "+str(randSplit) + "\n")
+            #if there is only one possible split between the current section (cell length = 2)
+            if currNode.coordinates[1][1]-currNode.coordinates[1][0] == 2:
+                #set it so that the split is equivalent of to have the cell coordinate be size 1
+                currNode.split1=Node(currNode.coordinates[0][0], currNode.coordinates[0][1], currNode.coordinates[1][0], currNode.coordinates[1][0]+1)
+                print(currNode.split1.coordinates)
+                currNode.split2=Node(currNode.coordinates[0][0], currNode.coordinates[0][1], currNode.coordinates[1][0]+1, currNode.coordinates[1][1])
+                print(currNode.split2.coordinates)
+            
+            else:
+                #get the random coordinate between the range of the current node to split between for the children
+                randSplit = random.randint(currNode.coordinates[1][0]+1, columns-1)
+
+                print("rand "+str(randSplit) + "\n")
 
             
-            #currNode.split1 = Node(currNode.coordinates[0][0],randSplit,currNode.coordinates[1][0] ,currNode.coordinates[1][1])
-            #currNode.split2 = Node(randSplit+1, currNode.coordinates[0][1],currNode.coordinates[1][0] ,currNode.coordinates[1][1])
-            currNode.split1 = Node(currNode.coordinates[0][0], currNode.coordinates[0][1],currNode.coordinates[1][0] ,randSplit)
-            print(currNode.split1.coordinates)
+                #currNode.split1 = Node(currNode.coordinates[0][0],randSplit,currNode.coordinates[1][0] ,currNode.coordinates[1][1])
+                #currNode.split2 = Node(randSplit+1, currNode.coordinates[0][1],currNode.coordinates[1][0] ,currNode.coordinates[1][1])
+                currNode.split1 = Node(currNode.coordinates[0][0], currNode.coordinates[0][1],currNode.coordinates[1][0] ,randSplit)
+                print(currNode.split1.coordinates)
 
-            currNode.split2 = Node(currNode.coordinates[0][0], currNode.coordinates[0][1],randSplit+1,currNode.coordinates[1][1])
-            print(currNode.split2.coordinates)
+                currNode.split2 = Node(currNode.coordinates[0][0], currNode.coordinates[0][1],randSplit+1,currNode.coordinates[1][1])
+                print(currNode.split2.coordinates)
 
             #start the recursive calls for generating the next child nodes
             print ("split1RandV")
