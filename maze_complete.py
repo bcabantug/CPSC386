@@ -248,8 +248,8 @@ print("")
 
 #place the portals in the list of the maze to print
 for coor in mazePortals:
-    x = coor[0]
-    y = coor[1]
+    y = coor[0]
+    x = coor[1]
 
     maze[x][y] = " "
 
