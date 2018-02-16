@@ -1,3 +1,12 @@
+#Authors:
+#Brian Cabantug: bcabantug@csu.fullerton.edu
+#Hancheng Zhou: jerryzhhch@csu.fullerton.edu
+#Mason Guzman-Sanchez: masongs@csu.fullerton.edu
+
+#Description: This python script generates a 2d maze using binary space partitioning
+#User inputs size of the maze (ideally equivalent row and columns) and the maze is generated and outputted
+#with the marked starting and end points 
+
 #library imports
 import math
 import sys
@@ -223,19 +232,6 @@ def verticalSplit(nodeToSplit, portalList):
         #right child
         binarySP(nodeToSplit.split2.coordinates[0][1], nodeToSplit.split2.coordinates[1][1], nodeToSplit.split2,portalList)
 
-
-
-#function to print out tree leaves to verify all splits are correct
-# def printTreeLeaves(cNode):
-#     if cNode == None:
-#         print ("")
-#     else:
-#         if cNode.split1 == None and cNode.split2==None:
-#             print(cNode.coordinates)
-       
-#         printTreeLeaves(cNode.split1)
-        
-#         printTreeLeaves(cNode.split2)
 
 #start of actual main function
 #sets root node
