@@ -233,6 +233,33 @@ def printTreeLeaves(cNode):
         
         printTreeLeaves(cNode.split2)
 
+def printMaze(portalList,inputRows, inputColumns):
+    for x in range(inputRows):
+        rowString = ""
+        for y in range(inputColumns):
+            if x%2 == 0 and y%2 == 0:
+                rowString+="+" 
+            elif x%2 == 1 and y == 0:
+                rowString+="|"
+            elif x==0 and y%2 ==1:
+                rowString+="-"
+            
+            elif x == 1 and y == 1:
+                rowString+="S"
+            elif x == inputRows-1 and y == inputColumns-1:
+                rowString+="X"
+
+            elif x == inputRows and y%2 == 0:
+                rowString+="+"
+            elif x%2 == 0 and y == inputColumns:
+                rowString+="+"
+            
+            elif x == inputRows and y%2 == 1:
+                rowString+="-"
+            elif x%2 == 1 and y == inputColumns:
+                rowString+="|"
+        print(rowString)
+
 
 
 treeRoot = Node(0, rowsI, 0, columnsI)
@@ -242,6 +269,8 @@ binarySP(rowsI, columnsI, treeRoot, mazePortals)
 for z in mazePortals:
     print(z)
 
+
+printMaze(mazePortals, rowsI, columnsI)
 
 # print("Printing leaves of bspTree:")
 # printTreeLeaves(treeRoot)
